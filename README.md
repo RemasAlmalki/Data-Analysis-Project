@@ -46,7 +46,7 @@ print("F1 Score:", f1)
 import pandas as pd
 
 
-df = pd.read_csv('..........')
+df = pd.read_csv('breast+cancer+wisconsin+diagnostic.zip')
 df.head()
 
 df.info() # توريني ايش الكولوم الموجوده
