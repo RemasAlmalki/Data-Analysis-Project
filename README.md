@@ -1,53 +1,5 @@
-from sklearn.datasets import make_classification
+The task aims to distinguish the diagnosis as "malignant" or "benign" using the Gaussian Naive Bayes model. The code starts by removing the identifier to neutralize it from the prediction column, then converting the diagnosis values ​​to numbers: 1 for malignant and 0 for benign. After that, the data is scanned for training (80%) and (20%) for executing the model.
 
-X, y = make_classification(
-    n_features=4,
-    n_classes=.....,
-    n_samples=35,
-    n_informative=2, # الصفين المفيده
-    random_state=1, # يثبت التقسيمه لو اشتغل مع احد يصير الي عندي فالترين كمان هو عندها
-    n_clusters_per_class=1,
-)
+A model is built using the training data, then the results are predicted on the test data. Finally, the independent model (accuracy) is calculated, and a classification report is displayed showing the performance of the model in predicting the two data classes (malignant/benign) supervising the accuracy and recall (recall) criteria and the classification accuracy (F1-score).
 
-from sklearn.model_selection import train_test_split #    استخدم القيم الي بقيت  من التست  لتقسيم  للترينق ولازم يكون اكثرمن التست
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=....., random_state=.....
-)
-
-from sklearn.naive_bayes import GaussianNB #بعد ما اعطيه القيمه الي يختبرها في اكس اخليه يخمن قيمه الواي
-
-# Build a Gaussian Classifier
-model = GaussianNB()
-
-# Model training
-model.fit(X_train, y_train)
-
-# Predict Output
-predicted = model.predict([X_test[3......]])# اعطيته يخمن قيمه وحده
-
-print("Actual Value:", y_test[3......])
-print("Predicted Value:", predicted[0])
-
-from sklearn.metrics import (
-    accuracy_score,
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    f1_score,
-)
-
-y_pred = model.predict(X_test)
-accuray = accuracy_score(y_pred, y_test)
-f1 = f1_score(y_pred, y_test, average="weighted")
-
-print("Accuracy:", accuray)
-print("F1 Score:", f1)
-
-import pandas as pd
-
-
-df = pd.read_csv('breast+cancer+wisconsin+diagnostic.zip')
-df.head()
-
-df.info() # توريني ايش الكولوم الموجوده
-# نتيجه تقيم المودا كل ماقربت للواحد يعني المودل كويس  اهم شي ماتوصل 1
+Determine the overall accuracy percentage of the model, with an analysis of the allocation of each class in the class report.
